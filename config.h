@@ -63,9 +63,9 @@ static const char *tagsel[][2][2] = {
 	/*  fg          bg              fg          bg  */
 	{ { col_cyan, 			col_gray1 }, { col_bar_bg, col_cyan } },
 	{ { col_cyan,			col_gray1 }, { col_bar_bg, col_cyan } },
-	{ { col_cyan_custom,	col_gray1 }, { col_bar_bg, col_cyan_custom } },
-	{ { col_cyan_custom, 	col_gray1 }, { col_bar_bg, col_cyan_custom } },
-	{ { col_green,        	col_gray1 }, { col_bar_bg, col_green } },
+	{ { col_cyan_custom,		col_gray1 }, { col_bar_bg, col_cyan_custom } },
+	{ { col_cyan_custom,		col_gray1 }, { col_bar_bg, col_cyan_custom } },
+	{ { col_green,			col_gray1 }, { col_bar_bg, col_green } },
 	{ { col_white,   		col_gray1 }, { col_bar_bg, col_white } },
 	{ { col_blue,  			col_gray1 }, { col_bar_bg, col_blue } },
 	{ { col_yellow,			col_gray1 }, { col_bar_bg, col_yellow } },
@@ -81,9 +81,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask 	isfloating  isterminal      noswallow	monitor */
-	{ TERMCLASS,  NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-	{ NULL,  NULL,       "ncpamixer",       	    0,            1,           1,         0,        -1 },
-	{ NULL,  NULL,       "cal",       	    0,            1,           1,         0,        -1 },
+	{ TERMCLASS,	NULL,       NULL,       	    0,            0,           1,         0,        -1 },
+	{ NULL,		NULL,       "ncpamixer",       	    0,            1,           1,         0,        -1 },
+	{ NULL,		NULL,       "nmtui",       	    0,            1,           1,         0,        -1 },
+	{ NULL,		NULL,       "cal",       	    0,            1,           1,         0,        -1 },
 };
 
 /* layout(s) */
@@ -122,27 +123,28 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_w,      spawndefault,   {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 
-	{ MODKEY,			     		XK_f,	   spawn,	   	   SHCMD("feh --recursive --bg-fill --randomize /media/pictures/Wallpapers/*")},
+	{ MODKEY,	    		XK_f,	   spawn,	   	   SHCMD("feh --recursive --bg-fill --randomize /media/pictures/Wallpapers/*")},
 
-	{ MODKEY,			     		XK_Up,	   spawn,	   	   SHCMD("amixer sset Master playback 5%+;pkill -RTMIN+8 dwmblocks")},
-	{ MODKEY,			     		XK_Down,   spawn,	   	   SHCMD("amixer sset Master playback 5%-;pkill -RTMIN+8 dwmblocks")},
-	{ MODKEY,			     		XK_m,	   spawn,	   	   SHCMD("amixer -D pulse set Master 1+ toggle;pkill -RTMIN+8 dwmblocks")},
-	{ MODKEY|ShiftMask,			    XK_m,  	   spawn,	   	   SHCMD("st ncpamixer")},
-	{ MODKEY,					    XK_p,  	   spawn,	   	   SHCMD("playerctl -p spotify play-pause")},
+	{ MODKEY,	     		XK_Up,	   spawn,	   	   SHCMD("amixer sset Master playback 5%+;pkill -RTMIN+8 dwmblocks")},
+	{ MODKEY,	     		XK_Down,   spawn,	   	   SHCMD("amixer sset Master playback 5%-;pkill -RTMIN+8 dwmblocks")},
+	{ MODKEY,			XK_m,	   spawn,	   	   SHCMD("amixer -D pulse set Master 1+ toggle;pkill -RTMIN+8 dwmblocks")},
+	{ MODKEY|ShiftMask,		XK_m,  	   spawn,	   	   SHCMD("st ncpamixer")},
+	{ MODKEY,			XK_p,  	   spawn,	   	   SHCMD("playerctl -p spotify play-pause")},
 
-	{ MODKEY,			     		XK_Right,  spawn,	   	   SHCMD("sudo light -A 25")},
-	{ MODKEY,			     		XK_Left,   spawn,	   	   SHCMD("sudo light -U 25")},
+	{ MODKEY,	 		XK_Right,  spawn,	   	   SHCMD("sudo light -A 25")},
+	{ MODKEY,	     		XK_Left,   spawn,	   	   SHCMD("sudo light -U 25")},
 
-	{ MODKEY,			     		XK_a,      spawn,	   	   SHCMD("autorandr -c")},
+	{ MODKEY,	     		XK_a,      spawn,	   	   SHCMD("autorandr -c")},
+	{ MODKEY|ShiftMask,     	XK_n,      spawn,	   	   SHCMD("st nmtui")},
 
-	{ 0,			     			XK_Print,  spawn,	   	   SHCMD("flameshot gui")},
-	{ MODKEY,			     		XK_e,  	   spawn,	   	   SHCMD("st lfrun")},
+	{ 0,	     			XK_Print,  spawn,	   	   SHCMD("flameshot gui")},
+	{ MODKEY,	     		XK_e,  	   spawn,	   	   SHCMD("st lfrun")},
 
-	{ MODKEY,			     		XK_c,  	   spawn,	   	   SHCMD("st cal --color -3")},
-	{ MODKEY|ShiftMask,	     		XK_c,  	   spawn,	   	   SHCMD("st cal --color -y")},
+	{ MODKEY,	     		XK_c,  	   spawn,	   	   SHCMD("st cal --color -3")},
+	{ MODKEY|ShiftMask,  		XK_c,  	   spawn,	   	   SHCMD("st cal --color -y")},
 
-	{ MODKEY,			     		XK_F4,     spawn,	   	   SHCMD("sudo shutdown -h 0")},
-	{ MODKEY,			     		XK_F5,     spawn,	   	   SHCMD("sudo reboot")},
+	{ MODKEY,	     		XK_F4,     spawn,	   	   SHCMD("sudo shutdown -h 0")},
+	{ MODKEY,	     		XK_F5,     spawn,	   	   SHCMD("sudo reboot")},
 
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
