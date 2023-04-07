@@ -12,8 +12,11 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Inconsolata:style=Regular:size=11" };
-static const char dmenufont[]       = "Inconsolata:style=Regular:size=11";
+static const char *fonts[] = {
+        "SauceCodePro Mono:pixelsize=14:style=bold",
+        "SauceCodePro Nerd Font Mono:pixelsize=16:style=bold",
+ };
+static const char dmenufont[]       = "SauceCodePro Mono:pixelsize=14:style=bold";
 
 /* Custom Colors */
 static const char col_bar_bg[]      = "#120f14"; /* dark purple */
@@ -45,16 +48,23 @@ static const char *colors[][4]      = {
 	[SchemeSel] =  { col_bar_fg, col_bar_bg,  col_selected, col_selected_f },
 
 		/*					         fg           bg              border   */
-	[StatusSchemeNorm] =	 { col_bar_fg, 	col_bar_bg,  	col_bar_bg }, // \x03
-	[StatusSchemeWarn] =	 { col_yellow, 	col_bar_bg, 	col_bar_bg }, // \x04
-	[StatusSchemeUrgent]=	 { col_white, 	col_red,    	col_bar_bg }, // \x05
-	[StatusSchemeDecorator]= { col_red, 	col_bar_bg,    	col_bar_bg }, // \x06
+	[SchemeWarn] =	 { col_yellow, 	col_bar_bg, 	col_bar_bg }, // \x03
+	[SchemeUrgent]=	 { col_white, 	col_red,    	col_bar_bg }, // \x04
+	[SchemeCol1]= { col_red, 	col_bar_bg,    	col_bar_bg }, // \x05
+	[SchemeCol2]= { col_green, 	col_bar_bg,    	col_bar_bg }, // \x06
+	[SchemeCol3]= { col_blue, 	col_bar_bg,    	col_bar_bg }, // \x07
+	[SchemeCol4]= { col_magenta, 	col_bar_bg,    	col_bar_bg }, // \x08
+	[SchemeCol5]= { col_cyan_custom, 	col_bar_bg,    	col_bar_bg }, // \x09
+	[SchemeCol6]= { col_magenta, 	col_bar_bg,    	col_bar_bg }, // \x0a
+	[SchemeCol7]= { col_cyan_custom, 	col_bar_bg,    	col_bar_bg }, // \x0b
+	[SchemeCol8]= { col_red, 	col_bar_bg,    	col_bar_bg }, // \x0c
+	[SchemeCol9]= { col_red, 	col_bar_bg,    	col_bar_bg }, // \x0d
 };
 
 /* tagging */
 /* 1: Terminal, 2: Code, 3: Files, 4: Files, 5: Spotify, 6: Projector, 7: Discord, 8: Firefox, 9: Firefox*/
-static const char *tags[] =    { "  ", "  ", "  ", "  ", "  ", " 󰐮 ", " 󰙯 ", "  ", "  " };
-static const char *tagsalt[] = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " };
+static const char *tags[] =    { "", "", "", "", "", "󰐮", "󰙯", "", "" };
+static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *defaulttagapps[] = { TERMINAL, "vscodium", NULL, NULL, "spotify-launcher", NULL, "discord", "waterfox-g4", "waterfox-g4" };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
